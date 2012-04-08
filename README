@@ -1,0 +1,13 @@
+Here I will collect some tools may be useful
+Now here is a m4 macro
+```
+	invoke(strcmp, str1, str2)
+```
+
+It generates an invocation like:
+```assembler
+	SET PUSH, __ret_1
+	SET PUSH, str1
+	SET PC, writeline
+__ret_1:
+```
