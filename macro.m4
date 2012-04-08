@@ -21,3 +21,8 @@ foreach(x, (`reverse(shift($@))'), ` SET PUSH, 'x`
 ') SET PC, $1
 current_ret_name:next_ret')
 
+define(`jmp', ` SET PC, ')
+define(`ret', ` SET PC, POP
+')
+defn(`JMP', jmp)
+defn(`RET', ret)

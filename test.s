@@ -32,12 +32,14 @@ strlen:
 	mov i, 0
 
 	__strlen_loop:
-		ifn [a], 0
+		ife [a], 0
+		jmp __strlen_exit
 		add i, 1
 		add a,1
-		jmp __strlen_loop
+		JMP __strlen_loop
+	__strlen_exit:
 
-	jmp pop
+	ret
 
 writeline:
 	mov a, pop
@@ -49,8 +51,9 @@ writeline:
 		add a, 1
 		ifn [a], 0
 		jmp __writeline_loop1
+		
+	ret
 
-	jmp pop
 
 datum:
 	exitmsg: word "exit ok",0
