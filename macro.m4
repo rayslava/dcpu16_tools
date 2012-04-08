@@ -19,10 +19,12 @@ define(`reverse', `ifelse(`$#', `0', , `$#', `1', ``$1'',
 define(`invoke', ` SET PUSH, current_ret_name
 foreach(x, (`reverse(shift($@))'), ` SET PUSH, 'x`
 ') SET PC, $1
-current_ret_name:next_ret')
+:current_ret_name next_ret')
 
-define(`jmp', ` SET PC, ')
-define(`ret', ` SET PC, POP
+define(`jmp', `SET PC, ')
+define(`mov', `SET')
+define(`ret', `SET PC, POP
 ')
 defn(`JMP', jmp)
 defn(`RET', ret)
+defn(`MOV', mov)
