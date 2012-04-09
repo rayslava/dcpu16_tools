@@ -1,6 +1,7 @@
 mov a, 10
 
-invoke(inttostr, digit)
+invoke(upcase, str1)
+invoke(writeline, str1)
 
 mov a, [0x8000]
 mov b, [0x8001]
@@ -80,6 +81,27 @@ dat 0xeee0
 		jmp __next_digit
 		
 	ret
+
+:upcase
+	mov a, pop
+	jmp __upcase_start
+
+	:__upcase_loop
+		add a, 1
+	:__upcase_start
+		ife [a], 0
+		jmp __upcase_exit
+
+		ifg	0x60, [a]
+		jmp __upcase_loop
+		ifg [a], 0x7a
+		jmp __upcase_loop
+
+		sub [a], 0x20
+		jmp __upcase_loop
+
+	:__upcase_exit
+		ret
 
 :datum
 	:str1 

@@ -1,4 +1,5 @@
 divert(`-1')
+define(`upcase', `translit(`$*', `a-z', `A-Z')')dnl
 define(`foreach', `pushdef(`$1')_foreach($@)popdef(`$1')')
 define(`_arg1', `$1')
 define(`_foreach', `ifelse(`$2', `()', `',
